@@ -1,0 +1,12 @@
+Bun 25
+Shoe 0
+Needle -30
+Biscuit 35
+Table 0
+Fever -55
+Bread 45
+Chair 0
+Knife -85
+Milk 62
+Pen 0
+Poison -99
