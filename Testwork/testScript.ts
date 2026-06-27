@@ -2,7 +2,7 @@
 // tsc testscript.ts
 
 let num = 1255.575485;
-// arg = 0: is th same as empty parenthesis 
+// arg = 0: is th same as empty parenthesis
 var result = num.toFixed(0);
 var rounded = Math.round(num); // Both the same
 // console.log(num, result, rounded);
@@ -10,11 +10,11 @@ var rounded = Math.round(num); // Both the same
 var bigNo = 25545236888;
 var fin = bigNo.toLocaleString();
 // Alternative
-var final = bigNo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+var final = bigNo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 // console.log(final)
 
 const data = {
-price: 2545825.25,
+  price: 2545825.25,
   discount: 2545825 / 2,
   items: 74253654,
   name: "Emmanuel",
@@ -26,38 +26,27 @@ price: 2545825.25,
 // console.log(data)
 
 let them = [4000, 4542695, 3000000, 12412452];
-const no = them.map((pick) =>
-  pick.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+const no = them.map(
+  (pick) => pick.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
   // pick.toLocaleString()
 );
 // console.log(no)
 
 
-// let regex = /([a-z])\1.*(.)\d/ // prior index are accted (except the xter in-betweeb) for idx of the last two digits
-// let regex = /([a-z])\1.*(\d)/ // prior index are accted for idx of the last digit(zero-based) and last digit len-based
-// let regex = /([a-z])\1+(.)+(.)\d/ // prior index are accnted for but last 2 \d must be two for perfect indexing
-
-// let regex = /([a-z])\1+([a-z])+(.)\d/ // (2, 3) means zero index 2 and len index 3 of the starting seen conditon 
-// NB: This is how it all works. (This is the most accurate)
-
-// let regex = /([a-z])\1+([a-z])+(\d)/ // identical xter + one xter + identical digit 
+const strin = "created_at, username, name, id, email"
+// console.log('Testing in Progress...', strin.replace(/\b(?=([a-z]))/ig, 'user.')) // user.created_at, user.username, user.name, user.id, user.email
+// console.log('Testing in Progress...', strin.replace(/\B\w(?![a-z])(?![_])/g, u => u.toUpperCase())) // created_aT, usernamE, namE, iD, emaiL
+console.log('Testing in Progress...', strin.replace(/\B\w{3}(?![a-z])(?![_])/g, u => u.toUpperCase())) // created_AT, usernAME, nAME, id, emAIL
+// console.log('Testing in Progress...', strin.replace(/\b\w/g, u => u.toUpperCase())) // Created_at, Username, Name, Id, Email
 
 
-// let regex = /(\d)\1\1/; // For three identical digit!
-// let regex  = /(s)+(.)+(s)\1"/ // For s(anything)ss
-// let regex = /(s)+([a-z])+(s)\1"/ // For s(any lower. alphabet)ss
-// let regex = /(\d)\1/; // For duplicate digit next to each other!
-// let regex = /(.)\1/; // Works for both digits and letters
-// let regex = /([a-z])\1\1/; // for three identical letters (lowercase)
-// let regex = /(\d)/;  // Locate the first digit
-// let regex = /(b)+(.*)+(b)/; // To check a xter (e.g b) that appeared more than once NB It also works on identical xter positioned side by side
-// let regex = /([a-z][a-z])/; // Location of any two xters following each other
-// let regex = /(?=.*[a-z])(?=.*[@$!%*?&])(?=.*\d)/g;
-// let regex = /(?=.*\d)(?<=.*\d)/; // At least two digits anywhere (either together or separately) or /(?=.*\d.*\d)/g
-// let regex = /(?=.*\d{2})/g; // At least any two digits following each other
-// let regex = /^(?!.*\d{2}).*$/; // There's no two or more consecutive digits
-// let regex = /(?=.*[a-z]{2})/g; // At least any two xters following each other
+// const putBefore = ['Hello', 'World!']
+// const cout = putBefore.map(d => d.replace(/\b(?=([a-zA-Z]))/, 'user.'))
+// console.log(cout)
 
+// let regex = /(\d)\1\1/; // For three consecutive digit!
+// let regex = /([a-z])\1\1/; // For three consecutive xter!
+// let regex = /(.)\1\1/; // For three consecutive xter or digits!
 // let regex = /([a-z])\1.*(.)\d/;  // For a duplicate digit and letter
 // let regex = /([a-z]{3})/;
 // let pass = "P@sssw2rd";
@@ -69,7 +58,12 @@ let pass = "rabab";
 
 if (regex.test(pass)) {
   let receiver = regex.exec(pass);
-  console.log("Yes!", receiver, `Len = ${receiver![0].length}`, `Index = ${receiver?.index}`);
+  console.log(
+    "Yes!",
+    receiver,
+    `Len = ${receiver![0].length}`,
+    `Index = ${receiver?.index}`,
+  );
   // let output = '';
   // for(let i = 0; i < pass.length; i++){
   // console.log(pass[i])
@@ -88,22 +82,18 @@ if (regex.test(pass)) {
   console.log("No!");
 }
 
-
-
-
 let newData = { ...data, price: undefined };
 let catched = JSON.stringify(newData);
 let opp = JSON.parse(catched);
 // console.log(catched, '\n', opp);
 
 const myDate = new Date();
-let to_join = ["Tos", "in", "Jo", "seph",]
-let resu = to_join.join("")
+let to_join = ["Tos", "in", "Jo", "seph"];
+let resu = to_join.join("");
 // console.log(to_join, resu)
 
 // const time_Test = myDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: 'numeric', month: "long"}) // Don't know month shows up
 // const time_Test = myDate.toLocaleTimeString('en-US', {hour: 'numeric', minute: 'numeric'}) // 10:50 PM
-
 
 // const goodDate = myDate.toDateString(); // Fri Jul 11 2025
 // const dateTest = myDate.toUTCString() // Fri, 11 Jul 2025 15:55:04 GMT NB: Hour is an Hour late
@@ -113,12 +103,16 @@ let resu = to_join.join("")
  */
 // const dateTest = myDate.toLocaleString('en-US', {month: 'long', weekday: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
-
 /**
  * Monday, August 4 10:51 PM NB: you can also get month separately by filling in the month property only
  * */
-const dateString = myDate.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}) 
-
+const dateString = myDate.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+});
 
 // const year = myDate.getFullYear()
 // const month = myDate.getMonth() + 1
@@ -134,18 +128,18 @@ const key = crypto.randomUUID();
 // console.log(key);
 
 interface Article {
-  Author: string,
-  tagg: string[]
+  Author: string;
+  tagg: string[];
   // tagg: string
-  published: boolean
+  published: boolean;
 }
 
 const for_tags: Article[] = [
-  {Author: "Tosin", tagg: ["Coding", "Testing"], published: true},
-  {Author: "Jaize", tagg: ["Coding"], published: true},
-  {Author: "Joseph", tagg: ["Testing"], published: true},
-  {Author: "Emmanuel", tagg: ["testing", "coding"], published: true}
-] 
+  { Author: "Tosin", tagg: ["Coding", "Testing"], published: true },
+  { Author: "Jaize", tagg: ["Coding"], published: true },
+  { Author: "Joseph", tagg: ["Testing"], published: true },
+  { Author: "Emmanuel", tagg: ["testing", "coding"], published: true },
+];
 
 // const for_tags: Article[] = [
 //   {Author: "Tosin", tagg: "Coding,Testing", published: true},
@@ -153,149 +147,156 @@ const for_tags: Article[] = [
 //   {Author: "Joseph", tagg: "Testing,Coding", published: true}
 // ]
 
-let tag_test = ["Coding", "Testing"]
+let tag_test = ["Coding", "Testing"];
 
 // const for_d = for_tags.filter((pick) => {
 //   return pick.tagg.includes("Coding")
 // })
 
-const for_multi = for_tags.filter((pick) => 
-  tag_test.every(t => pick.tagg.includes(t))
-)
+const for_multi = for_tags.filter((pick) =>
+  tag_test.every((t) => pick.tagg.includes(t)),
+);
 
 // console.log(for_d)
 // console.log(for_multi)
 
 interface Person {
-  name: string,
-  age: number,
-  address: string | string[], 
-  isOnline: boolean
+  name: string;
+  age: number;
+  address: string | string[];
+  isOnline: boolean;
 }
 
 interface other extends Person {
-  image: string,
-  kin: string | string[],
-  maidenName: string,
+  image: string;
+  kin: string | string[];
+  maidenName: string;
 }
 
 const instead: Person = {
   name: "Jaize",
   age: 12,
-  address: 'LA',
-  isOnline: false
-}
-
+  address: "LA",
+  isOnline: false,
+};
 
 // instead.isOnline = instead.isOnline ?? false
-instead.isOnline = !!instead.name
-
+instead.isOnline = !!instead.name;
 
 // console.log('\n', instead)
 
-let a1 = [7, 8, 9]
-let a2 = [4, 5, 6]
+let a1 = [7, 8, 9];
+let a2 = [4, 5, 6];
 
-let a3 = a1.concat(a2)
-// console.log(a3, typeof a3)
+let a3 = a1.concat(a2);
+console.log("Concat", a3, typeof a3)
 
-const man = (name: string, age: number) => name
+const man = (name: string, age: number) => name;
 interface Bodies {
-  boy: (name: string, age: number) => any
-  girl: (name: string, age: number, hairLen: string) => any
+  boy: (name: string, age: number) => any;
+  girl: (name: string, age: number, hairLen: string) => any;
 }
 
 interface Parent {
-  father: (name: string, age: number) => any
-  mother: (name: string, age: number, hairLen: number) => any
+  father: (name: string, age: number) => any;
+  mother: (name: string, age: number, hairLen: number) => any;
 }
 
-type Family<T> = T extends Bodies ? T['boy'] : T extends Parent ? T['mother'] : never; 
+type Family<T> = T extends Bodies
+  ? T["boy"]
+  : T extends Parent
+    ? T["mother"]
+    : never;
 
 // type seen = Parameters<typeof man>
 // type seen = Parameters<Family<Bodies>>
-type seen = Parameters<Family<Bodies | Parent>>
-const ss = (s: seen[2]) => s
+type seen = Parameters<Family<Bodies | Parent>>;
+const ss = (s: seen[2]) => s;
 // console.log(ss(45))
 
 // const cryp = Math.round(Math.random() * 1e3)
 // console.log(cryp)
 
 let fresh_now = new Date();
-let Now = Date.now()
-let stamptwist = new Date(Now)
-let specific =  60 * 60 * 1000; // 1Hr
-let spec = new Date(Now + specific)
+let Now = Date.now();
+let stamptwist = new Date(Now);
+let specific = 60 * 60 * 1000; // 1Hr: 1000 or 1e3
+let spec = new Date(Now + specific);
 
-console.log(`\nFresh: ${fresh_now} \nNow: ${Now} \nStampfiltered: ${stamptwist} \nSpecific: ${spec} \n`)
-let arrayStr = ["['Tosin', 'Joseph', 'Emmanuel']"]
+console.log(
+  `\nFresh: ${fresh_now} \nNow: ${Now} \nStampfiltered: ${stamptwist} \nSpecific: ${spec}\n`,
+);
+let arrayStr = ["['Tosin', 'Joseph', 'Emmanuel']"];
+
+// const fub = (...nams: (string | number | boolean | Date)[]) => nams;
+// const y = fub(4, "Hello World!", false, new Date())
+// console.log(y)
+const fub = (...nams: (string | number | boolean | Date | Function)[]) => console.log(nams);
+const fff = () => "Hello"
+// fub(4, "Hello World!", false, new Date(), fff.apply(this)) // Or fff() => 'Hello'
 
 // let jsonStr = JSON.stringify(arrayStr[0]?.replace(/'/g, "\""))
-let jsonStr = JSON.stringify(arrayStr[0])
-let jsonPar = JSON.parse(jsonStr)
+let jsonStr = JSON.stringify(arrayStr[0]);
+let jsonPar = JSON.parse(jsonStr);
 
-let check = (arrayStr[0] as string).split(',')
+let check = (arrayStr[0] as string).split(",");
+// console.log(jsonStr, '\n', jsonPar)
 
-/*
-for(let i in check){
-  // check[i] = check[i]!.replace(/"/g, '')
-  check[i] = check[i]!.replace(/'/g, '')
-  check[i] = check[i].replace(/\s+/g, '')
-  check[i] = check[i].replace("[", '')
-  check[i] = check[i].replace("]", '')
-}
-*/
+
+// for(let i in check){
+//   check[i] = check[i]!.replace(/'/g, '')
+//   check[i] = check[i].replace(/\s+/g, '')
+//   check[i] = check[i].replace("[", '')
+//   check[i] = check[i].replace("]", '')
+// }
+
 
 // console.log(arrayStr, '\n', jsonStr, '\n', jsonPar, check, typeof check)
 
 // let ttt = "-T!osin Emmanuel Jos@eph-"
-// console.log(ttt.replace(/[^a-z0-9\s]/ig, ''))
+// console.log(ttt.replace(/[^a-z0-9\s]+/ig, ''))
+let tag = "   tosin>Jaize,Jun/Emmanuel, Apr-Joe tag  user_tosin  "
+let x = tag.trim().split(/\W+/)
+let k = x.map(r => r.replace(/\b\w/, u => "#"+u.toUpperCase()))
+console.log(x, k)
+
+// const _dev = {
+//   name: "Tosin",
+//   age: 10,
+//   occupation: "Full_stack_Dev" 
+// }
+
+// const createQueryParams = (obj: Record<string, string | number>): string => {
+//   let xx = Object.entries(obj)
+//   let _res = '?'
+//   for (const [key, val] of xx){
+//     _res += key + '=' + val + '&'
+//   }
+//   return _res.replace(/[&]$/, '')
+// }
+// console.log("Created Queries", createQueryParams(_dev))
 
 
-
-
-let base: string[] = ["Coding", "Testing"]
+let base: string[] = ["Coding", "Testing"];
 // let base: string[] = []
-let concat = ['Tosin', "Emmanuel"]
-// base.forEach(t => {
-//   concat.push(t)
-// })
+let concat = ["Tosin", "Emmanuel"];
+base.forEach(t => {
+  concat.push(t)
+})
 // console.log("base:", base, "\nconcat:", concat)
 
-// let ayo = concat.map(t => t)
-let ayo = [...base, ...concat]
+let ayo = concat.map(t => t)
+// let ayo = [...base, ...concat];
+// ayo.sort((a, b) => a.localeCompare(b)) // ASC
+// ayo.sort((a, b) => b.localeCompare(a)) // DSC
 
-console.log(ayo)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log(ayo);
+// const f = [10, 41, 2, 8, 6,]
+// console.log("Normal:", f)
+// const asc = f.sort((a, b) => a - b) // ASC
+// console.log("Ascending:", asc)
+// const dsc = f.sort((a, b) => b - a) // DSC
+// console.log("Descending:", dsc)
 
 /**
  * 
@@ -334,7 +335,6 @@ if(regex.exec(pass)){
 }
 console.log(pass);
 */
-
 
 /*
 async function generateAesKey() {
@@ -376,7 +376,6 @@ async function generateRsaKey() {
 generateRsaKey()
 */
 
-
 // Available in Angular or install Node core and types
 // import * as fs from 'fs/promises'
 // async function readFile() {
@@ -397,7 +396,6 @@ generateRsaKey()
 //   }
 // }
 
-
 // For javascript syntax
 /*
 import * as fs from 'fs'
@@ -416,4 +414,5 @@ fs.writeFile('example.txt', 'Hello world!', (err) => {
     console.log('File saved')
   }
 })
+
 */
